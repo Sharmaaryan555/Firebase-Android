@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "316213065545",
+    "project_id": "fir-connectivity-530a5",
+    "storage_bucket": "fir-connectivity-530a5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:316213065545:android:eb3f453cd22e692be88c98",
+        "android_client_info": {
+          "package_name": "com.example.firebaseconnectivity"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChlRQbX86_Y5ms9oTaH-R32Y1MKs8d1rI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
