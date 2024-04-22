@@ -3,6 +3,7 @@ package com.example.firebaseconnectivity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -38,9 +39,14 @@ public class RegisterActivity extends AppCompatActivity {
                 String txt_password = password.getText().toString();
 
                 if (TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password)){
+
                     Toast.makeText(RegisterActivity.this, "Empty Credentials", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(RegisterActivity.this,MainActivity.class));
+                    finish();
+
                 } else if (txt_password.length() <6) {
                     Toast.makeText(RegisterActivity.this,"Password too short",Toast.LENGTH_SHORT).show();
+
                 }
                 else {
                     registerUser(txt_email,txt_password);
