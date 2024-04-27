@@ -12,15 +12,21 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -96,6 +102,56 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+//        FireStore DataBase
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+//        Map<String ,Object> city = new HashMap<>();
+//        city.put("Name" ,"Panipat");
+//        city.put("State","Haryana");
+//        city.put("Country","India");
+
+//        db.collection("Cities").document("JSR").set(city).addOnCompleteListener(new OnCompleteListener<Void>() {
+//        @Override
+//        public void onComplete(@NonNull Task<Void> task) {
+//            if (task.isSuccessful()){
+//                Toast.makeText(MainActivity.this, "Values added to FireStore Database", Toast.LENGTH_SHORT).show();
+//            }
+//        }
+//    });
+
+//        Merging The Firebase data
+
+
+//        Map<String,Object> data = new HashMap<>();
+//        data.put("Capital","Delhi");
+
+//        db.collection("Cities").document("JSR").set(data , SetOptions.merge()).addOnCompleteListener(new OnCompleteListener<Void>() {
+//            @Override
+//            public void onComplete(@NonNull Task<Void> task) {
+//                if (task.isSuccessful()){
+//                    Toast.makeText(MainActivity.this, "Merge Successful!", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
+
+        Map<String,Object> data = new HashMap<>();
+        data.put("Name","Tokyo");
+        data.put("Capital","Japan");
+        
+        db.collection("Cities").add(data).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentReference> task) {
+                if (task.isSuccessful()){
+                    Toast.makeText(MainActivity.this, "values added with unique Id", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+//        To Update the Values in firestore Database
+        DocumentReference reference1 =FirebaseFirestore.getInstance().collection("Cities").document("JSR");
+        reference1.update("Country","USA");
 
     }
 }
